@@ -1,0 +1,10 @@
+from pydantic import BaseModel, Field
+from typing import List
+
+class SuggestedSearchQueries(BaseModel):
+    queries: List[str] = Field(
+        ...,
+        title="Suggested search queries to be passed to the search engine",
+        min_items=1,
+        max_items=10  # Do not use a global variable here — hardcode or pass via settings
+    )
