@@ -6,5 +6,5 @@ class SuggestedSearchQueries(BaseModel):
         ...,
         title="Suggested search queries to be passed to the search engine",
         min_items=1,
-        max_items=10  # Do not use a global variable here — hardcode or pass via settings
+        max_items=10  
     )
