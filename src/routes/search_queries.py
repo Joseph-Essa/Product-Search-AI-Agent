@@ -10,12 +10,12 @@ search_queries_router = APIRouter(
 
 @search_queries_router.post("/SearchQueries")
 async def search_queries_pipeline(payload: InputModel):
-    crew_results = search_queries_crew.kickoff(inputs=payload.model_dump())
-
+    crew_results = search_queries_crew.kickoff(inputs=payload.dict())
+    
     return JSONResponse(
         status_code=200,
         content={
             "message": "Search queries pipeline completed successfully.",
-            "result": crew_results.model_dump()
+            "result": crew_results.dict()
         }
     )
