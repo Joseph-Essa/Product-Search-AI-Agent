@@ -6,8 +6,9 @@ class Settings(BaseSettings):
     APP_VERSION: str
     AGENTOPS_API_KEY: str 
     GEMINI_API_KEY : str 
-
-
+    TAVILY_API_KEY : str 
+    LLM_MODEL_ID : str
+    LLM_MODEL_TEMPERATURE : float
     class Config:
         env_file = ".env"
 
