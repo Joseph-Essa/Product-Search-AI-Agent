@@ -6,3 +6,4 @@ agentops==0.4.16
 crewai==0.130.0
 python-dotenv==1.1.0
 tavily-python==0.7.8
+scrapegraph-py==1.12.0
