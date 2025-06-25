@@ -1,7 +1,5 @@
 from crewai import Agent
 from clients import LLMClient
-from crewai.tools import tool 
-from tavily import TavilyClient
 from tools.crewai_tools import CrewaiTools
 
 
