@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "page_url": "https://www.amazon.eg/-/en/Air-Conditioners-samsung-Heating-Cooling/s?rh=n:21863915031,p_89:samsung",
+      "product_title": "Samsung Air Conditioner",
+      "product_image_url": "https://m.media-amazon.com/images/I/41vZU6VrjgL._AC_.jpg",
+      "product_url": "https://www.amazon.eg/Samsung-Inverter-Air-Conditioner/dp/B08L5VXRYG",
+      "product_current_price": 25000.0,
+      "product_original_price": 30000.0,
+      "product_discount_percentage": 16.67,
+      "product_specs": [
+        {
+          "specification_name": "Type",
+          "specification_value": "Inverter"
+        },
+        {
+          "specification_name": "Capacity",
+          "specification_value": "2 Ton"
+        }
+      ],
+      "agent_recommendation_rank": 1,
+      "agent_recommendation_notes": [
+        "High energy efficiency",
+        "Low noise level"
+      ]
+    },
+    {
+      "page_url": "https://www.jumia.com.eg/split-air-conditioners/lg/",
+      "product_title": "LG Split Air Conditioner",
+      "product_image_url": "https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/32/329831/1.jpg?3576",
+      "product_url": "https://www.jumia.com.eg/lg-split-system-air-conditioner-1-5-ton-18000-btu-white-32825141.html",
+      "product_current_price": 20000.0,
+      "product_original_price": 25000.0,
+      "product_discount_percentage": 20.0,
+      "product_specs": [
+        {
+          "specification_name": "Type",
+          "specification_value": "Split"
+        },
+        {
+          "specification_name": "Capacity",
+          "specification_value": "1.5 Ton"
+        }
+      ],
+      "agent_recommendation_rank": 2,
+      "agent_recommendation_notes": [
+        "Easy installation",
+        "Compact design"
+      ]
+    },
+    {
+      "page_url": "https://www.noon.com/egypt-en/daikin/",
+      "product_title": "Daikin Central Air Conditioner",
+      "product_image_url": "https://k.nooncdn.com/bundles/npm-ui-kit/images/noon-logo.ar.png",
+      "product_url": "https://www.noon.com/egypt-en/daikin-central-air-conditioner-3-ton-36000-btu-white-32825141",
+      "product_current_price": 35000.0,
+      "product_original_price": 40000.0,
+      "product_discount_percentage": 12.5,
+      "product_specs": [
+        {
+          "specification_name": "Type",
+          "specification_value": "Central"
+        },
+        {
+          "specification_name": "Capacity",
+          "specification_value": "3 Ton"
+        }
+      ],
+      "agent_recommendation_rank": 3,
+      "agent_recommendation_notes": [
+        "High cooling capacity",
+        "Durable construction"
+      ]
+    }
+  ]
+}
