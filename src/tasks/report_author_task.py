@@ -2,7 +2,7 @@ import os
 from crewai import Task
 from helpers.resources import create_agent_output_dir
 from models.enums.AgentNamesEnums import AgentNames
-from agents.report_author_agent import report_author_agent
+from agents import report_author_agent
 
 output_dir = create_agent_output_dir(AgentNames.REPORT_AUTHOR_AGENT.value)
 
