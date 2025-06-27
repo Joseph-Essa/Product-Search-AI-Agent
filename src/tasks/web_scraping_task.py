@@ -3,7 +3,7 @@ from crewai import Task
 from helpers.resources import create_agent_output_dir
 from models.enums.AgentNamesEnums import AgentNames
 from models.web_scraping import AllExtractedProducts
-from agents.web_scraping_agent import web_scraping_agent
+from agents import web_scraping_agent
 
 output_dir = create_agent_output_dir(AgentNames.WEB_SCRAPING_AGENT.value)
 

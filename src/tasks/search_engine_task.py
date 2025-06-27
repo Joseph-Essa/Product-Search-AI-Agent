@@ -3,7 +3,7 @@ from crewai import Task
 from helpers.resources import create_agent_output_dir
 from models.enums.AgentNamesEnums import AgentNames
 from models.search_engine import AllSearchResults
-from agents.search_engine_agent import search_engine_agent
+from agents import search_engine_agent
 
 output_dir = create_agent_output_dir(AgentNames.SEARCH_ENGINE_AGENT.value)
 

@@ -3,10 +3,10 @@ from crewai import Task
 from helpers.resources import create_agent_output_dir
 from models.enums.AgentNamesEnums import AgentNames
 from models.search_queries import SuggestedSearchQueries
-from agents.search_queries_agent import search_queries_recommendation_agent
+from agents import search_queries_agent
 
 
-output_dir = create_agent_output_dir(AgentNames.SEARCH_QUERIES_RECOMMENDATION_AGENT.value)
+output_dir = create_agent_output_dir(AgentNames.SEARCH_QUERIES_AGENT.value)
 
 
 search_queries_recommendation_task = Task(
@@ -25,5 +25,5 @@ search_queries_recommendation_task = Task(
     expected_output="A JSON object containing a list of suggested search queries.",
     output_json=SuggestedSearchQueries,
     output_file=os.path.join(output_dir, "step_1_suggested_search_queries.json"),
-    agent=search_queries_recommendation_agent
+    agent=search_queries_agent
 )

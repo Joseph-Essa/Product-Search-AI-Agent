@@ -3,7 +3,7 @@ from clients import LLMClient
 
 basic_llm = LLMClient().initialize_llm()
 
-search_queries_recommendation_agent = Agent(
+search_queries_agent = Agent(
     role="Search Queries Recommendation Agent",
     goal="\n".join([
                 "To provide a list of suggested search queries to be passed to the search engine.",
