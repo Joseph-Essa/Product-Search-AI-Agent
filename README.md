@@ -16,7 +16,7 @@ This project implements a sophisticated, multi-agent system designed for compreh
     *   **CrewAI:** For orchestrating autonomous AI agents.
     *   **Tavily:** For optimized AI search results.
     *   **ScrapeGraph-AI:** For intelligent web scraping.
-    *   **Groq & OpenAI:** Support for multiple LLM providers.
+    *   **Groq & Gemini:** Support for multiple LLM providers.
     *   **AgentOps:** For monitoring and observability of agent performance.
 *   **Extensible by Design:** Easily add new agents, tools, and crews to expand capabilities.
 
@@ -27,24 +27,24 @@ The project follows a clean and modular structure to separate concerns:
 ```
 .
 ├── src/
-│   ├── agents/         # Definitions for individual AI agents
-│   ├── api/            # FastAPI routers and endpoints
-│   ├── app/            # Core application logic and clients (LLM, AgentOps)
-│   ├── config/         # Configuration files for crews and settings
-│   ├── crew/           # Crew definitions and orchestration logic
-│   ├── models/         # Pydantic models for data validation
-│   ├── tasks/          # Task definitions for the agents
-│   ├── tools/          # Custom tools for agents (e.g., scraping)
-│   ├── utils/          # Utility functions
-│   └── main.py         # Main application entry point
-├── requirements.txt    # Project dependencies
-└── .env.example        # Environment variable template
+│   ├── agents/
+│   ├── assets/
+│   ├── clients/
+│   ├── crews/
+│   ├── helpers/
+│   ├── models/
+│   ├── routes/
+│   ├── tasks/
+│   ├── tools/
+│   └── main.py
+├── requirements.txt
+└── .env.example
 ```
 
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
-*   Python 3.9+
+*   Python 3.10+
 *   Git
 
 ### 2. Clone the Repository
@@ -53,66 +53,110 @@ git clone https://github.com/Joseph-Essa/Product-Search-AI-Agent.git
 cd Product-Search-AI-Agent
 ```
 
-### 3. Set Up a Virtual Environment
-```bash
-# For Windows
-python -m venv venv
-venv\Scripts\activate
+### 3. install python using miniconda 
 
-# For macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
+1) Download miniconda from [here](https://www.anaconda.com/docs/getting-started/miniconda/install)
+2) create a new enviroment Using following comand :
+```bash
+$ conda create -n ai_agent python=3.10
+```
+3) Activate the enviroment :
+```bash
+$ conda activate ai_agent
+```
+## (optional) Setup your comand line interface for better readability
+``` bash
+$ export PS1="\[\033[01;32m\]\u@\h:\w\n\[\033[00m\]\$ "
 ```
 
-### 4. Install Dependencies
+### 4. Install the Requirment packages 
 ```bash
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ### 5. Configure Environment Variables
 Create a `.env` file by copying the `.env.example` and fill in your API keys.
 
 ```bash
-cp .env.example .env
+$ cp .env.example .env
 ```
-
-Your `.env` file should look like this:
-```env
-# AgentOps for monitoring
-AGENTOPS_API_KEY="your_agentops_api_key"
-
-# Tavily for search
-TAVILY_API_KEY="your_tavily_api_key"
-
-# LLM Provider Keys (use at least one)
-OPENAI_API_KEY="your_openai_api_key"
-GROQ_API_KEY="your_groq_api_key"
-```
+set your enviroment variables in the `.env` file. like `OPENAI_API_KEY` value.
 
 ## 🏃 How to Run
 
 ### 1. Start the FastAPI Server
-Run the application from the root directory:
+Run the application from the root directory (src):
 ```bash
-uvicorn src.main:app --reload
+$ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 The API will be available at `http://127.0.0.1:8000`. You can access the auto-generated documentation at `http://127.0.0.1:8000/docs`.
 
 ### 2. Run a Crew
-You can trigger a research crew by sending a POST request to the `/api/v1/crew/run/{crew_name}` endpoint.
+You can trigger a research crew by sending a POST request to the `/api/v1/{crew_name}` endpoint.
 
-Here's an example using `curl` to run the `web_scraping_crew`:
+### 3. API Overview
+
+> Replace `{{API_BASE_URL}}` with the actual URL of your API (`http://localhost:8000` or your deployed server).
+
+---
+
+## 3.1🧾 Request Body
+
+Send a JSON payload like this:
+
+```json
+{
+  "product_name": "smartphone",
+  "websites_list": [
+    "www.amazon.eg",
+    "www.jumia.com.eg",
+    "www.noon.com/egypt-en"
+  ],
+  "country_name": "Egypt",
+  "no_keywords": 10,
+  "language": "English"
+}
+```
+
+## 3.2 Here's an example using `curl` to run the `search_queries_crew`:
+
 ```bash
-curl -X 'POST' \
-  'http://127.0.0.1:8000/api/v1/crew/run/web_scraping_crew' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
+curl -X POST "{{API_BASE_URL}}/api/v1/search_queries" \
+  -H "Content-Type: application/json" \
   -d '{
-  "topic": "https://www.scrapegraph-ai.io/",
-  "crew_input": {
-    "prompt": "Summarize the main features of ScrapeGraph-AI."
+    "product_name": "air condencer",
+    "websites_list": [
+      "www.amazon.eg",
+      "www.jumia.com.eg",
+      "www.noon.com/egypt-en"
+    ],
+    "country_name": "Egypt",
+    "no_keywords": 10,
+    "language": "English"
+  }'
+```
+# 3.3 Sample Response
+
+```json
+{
+  "message": "search_queries pipeline completed successfully.",
+  "results": {
+    "json_dict": {
+        "queries": [
+          "Samsung Galaxy A54 5G price comparison wwwamazon.eg",
+          "iPhone 13 price comparison wwwjumia.com.eg",
+          "Xiaomi Redmi Note 12 4G best price wwwnoon.com/egypt-en",
+          "Google Pixel 6a price comparison wwwamazon.eg",
+          "OnePlus Nord N30 5G price comparison wwwjumia.com.eg",
+          "Samsung Galaxy S23 Ultra price comparison wwwnoon.com/egypt-en",
+          "best price oppo a94 wwwamazon.eg",
+          "cheap iphone se 2022 wwwjumia.com.eg",
+          "best value Tecno Camon 20 Pro wwwnoon.com/egypt-en",
+          "budget smartphones under 5000 EGP wwwamazon.eg"
+      ]
+    }
   }
-}'
+}
 ```
 
 ## 📊 Results
